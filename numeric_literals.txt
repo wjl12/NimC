@@ -1,0 +1,38 @@
+hexdigit = digit | 'A'..'F' | 'a'..'f'
+octdigit = '0'..'7'
+bindigit = '0'..'1'
+unary_minus = '-' # See the section about unary minus
+HEX_LIT = unary_minus? '0' ('x' | 'X' ) hexdigit ( ['_'] hexdigit )*
+DEC_LIT = unary_minus? digit ( ['_'] digit )*
+OCT_LIT = unary_minus? '0' 'o' octdigit ( ['_'] octdigit )*
+BIN_LIT = unary_minus? '0' ('b' | 'B' ) bindigit ( ['_'] bindigit )*
+
+INT_LIT = HEX_LIT
+        | DEC_LIT
+        | OCT_LIT
+        | BIN_LIT
+
+INT8_LIT = INT_LIT ['\''] ('i' | 'I') '8'
+INT16_LIT = INT_LIT ['\''] ('i' | 'I') '16'
+INT32_LIT = INT_LIT ['\''] ('i' | 'I') '32'
+INT64_LIT = INT_LIT ['\''] ('i' | 'I') '64'
+
+UINT_LIT = INT_LIT ['\''] ('u' | 'U')
+UINT8_LIT = INT_LIT ['\''] ('u' | 'U') '8'
+UINT16_LIT = INT_LIT ['\''] ('u' | 'U') '16'
+UINT32_LIT = INT_LIT ['\''] ('u' | 'U') '32'
+UINT64_LIT = INT_LIT ['\''] ('u' | 'U') '64'
+
+exponent = ('e' | 'E' ) ['+' | '-'] digit ( ['_'] digit )*
+FLOAT_LIT = unary_minus? digit (['_'] digit)* (('.' digit (['_'] digit)* [exponent]) |exponent)
+FLOAT32_SUFFIX = ('f' | 'F') ['32']
+FLOAT32_LIT = HEX_LIT '\'' FLOAT32_SUFFIX
+            | (FLOAT_LIT | DEC_LIT | OCT_LIT | BIN_LIT) ['\''] FLOAT32_SUFFIX
+FLOAT64_SUFFIX = ( ('f' | 'F') '64' ) | 'd' | 'D'
+FLOAT64_LIT = HEX_LIT '\'' FLOAT64_SUFFIX
+            | (FLOAT_LIT | DEC_LIT | OCT_LIT | BIN_LIT) ['\''] FLOAT64_SUFFIX
+
+CUSTOM_NUMERIC_LIT = (FLOAT_LIT | INT_LIT) '\'' CUSTOM_NUMERIC_SUFFIX
+
+# CUSTOM_NUMERIC_SUFFIX is any Nim identifier that is not
+# a pre-defined type suffix.

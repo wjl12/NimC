@@ -1,0 +1,10 @@
+=     +     -     *     /     <     >
+@     $     ~     &     %     |
+!     ?     ^     .     :     \
+
+and or not xor shl shr div mod in notin is isnot of as from
+
+(    )     {    }     [    ]    ,  ;   [.    .]  {.   .}  (.  .)  [:
+
+∙ ∘ × ★ ⊗ ⊘ ⊙ ⊛ ⊠ ⊡ ∩ ∧ ⊓   # same priority as * (multiplication)
+± ⊕ ⊖ ⊞ ⊟ ∪ ∨ ⊔             # same priority as + (addition)
