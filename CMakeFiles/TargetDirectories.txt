@@ -1,0 +1,3 @@
+/Users/bill/Develop/Projects/NimC/CMakeFiles/NimC.dir
+/Users/bill/Develop/Projects/NimC/CMakeFiles/edit_cache.dir
+/Users/bill/Develop/Projects/NimC/CMakeFiles/rebuild_cache.dir
